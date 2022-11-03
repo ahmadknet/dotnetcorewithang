@@ -1,11 +1,12 @@
 ﻿using dotnetcorewithang.Data;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace dotnetcorewithang.Controllers
 {
-    public class EmployeesController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class EmployeesController : ControllerBase
     {
         private readonly DemoDBContext _db;
         public EmployeesController(DemoDBContext db)
@@ -13,13 +14,22 @@ namespace dotnetcorewithang.Controllers
             _db = db;
         }
 
+
         // GET: EmployeesController
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
-            var employees =await _db.Employees.ToListAsync(); 
+            var employees = await _db.Employees.ToListAsync();
             return Ok(employees);
         }
-
-        
     }
 }
+
+
+//// GET: EmployeesController
+//public IEnumerable<Employee> Get()
+//{
+//    var employees = _db.Employees.ToList();
+//    return employees;
+//    //return Ok(employees);
+//}

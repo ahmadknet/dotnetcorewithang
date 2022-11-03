@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 @Component({
   selector: 'app-fetch-data',
   templateUrl: './fetch-data.component.html'
@@ -8,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
 
 export class FetchDataComponent {
   public forecasts: WeatherForecast[] = [];
-
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+
     http.get<WeatherForecast[]>(baseUrl + 'weatherforecast').subscribe(result => {
       console.log(JSON.stringify(result))
       this.forecasts = result

@@ -1,0 +1,23 @@
+ <h1 id="tableLabel">Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!employeelist"><em>Loading...</em></p>
+
+<table class="table table-dark table-striped table-responsive-sm" aria-labelledby="tableLabel"
+ *ngIf="employeelist">
+  <thead>
+    <tr>
+      <th>name</th>
+
+      <th>email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let e of employeelist">
+      <td>{{ e.name }}</td>
+      <td>{{ e.email }}</td>
+
+    </tr>
+  </tbody>
+</table> 
